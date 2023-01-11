@@ -28,7 +28,7 @@
     @enderror
 
     <div class="mb-3">
-        <label for="body" class="form-label">Body</label>
+        <label for="body" class="form-label">Project Description</label>
         <textarea class="form-control @error('body') is-invalid @enderror" name="body" id="body" rows="5" value="{{old('body')}}"></textarea>
     </div>
     @error('body')
