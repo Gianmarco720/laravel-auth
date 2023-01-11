@@ -89,6 +89,7 @@ class ProjectController extends Controller
 
         // update the slug
         $project_slug = Project::generateSlug($val_data['title']);
+        $val_data['slug'] = $project_slug;
 
         // update the resource
         $project->update($val_data);

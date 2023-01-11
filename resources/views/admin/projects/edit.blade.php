@@ -7,7 +7,7 @@
 @if ($errors->any())
 <div class="alert alert-danger" role="alert">
     <ul>
-        @foreach ($errors-all() as $error)
+        @foreach ($errors->all() as $error)
         <li>{{$error}}</li>
         @endforeach
     </ul>
@@ -19,7 +19,7 @@
     @method('PUT')
     <div class="mb-3">
         <label for="title" class="form-label">Title</label>
-        <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" placeholder="My New Project" aria-describedby="titleHelper" value="{{$project->title}}">
+        <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" placeholder="My New Project" aria-describedby="titleHelper" value="{{old($project->title)}}">
         <small id="titleHelper" class="text-muted">Add a title for your new project, max 100 characters, must be unique</small>
     </div>
     @error('title')
@@ -29,7 +29,7 @@
     @enderror
 
     <div class="mb-3">
-        <label for="body" class="form-label">Body</label>
+        <label for="body" class="form-label">Description</label>
         <textarea class="form-control @error('body') is-invalid @enderror" name="body" id="body" rows="5" value="{{old($project->body)}}"></textarea>
     </div>
     @error('body')

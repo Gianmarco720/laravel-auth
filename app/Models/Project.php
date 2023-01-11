@@ -15,5 +15,6 @@ class Project extends Model
     public static function generateSlug($title)
     {
         $project_slug = Str::slug($title);
+        return $project_slug;
     }
 }
