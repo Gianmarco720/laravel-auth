@@ -32,7 +32,7 @@
                 <td>{{$project->slug}}</td>
                 <td>
                     <a class="btn btn-primary" href="{{route('admin.projects.show', $project->slug)}}" role="button"><i class="fas fa-eye fa-sm fa-fw"></i></a>
-                    <a class="btn btn-primary" href="#" role="button"><i class="fas fa-pencil fa-sm fa-fw"></i></a>
+                    <a class="btn btn-primary" href="{{route('admin.projects.edit', $project->slug)}}" role="button"><i class="fas fa-pencil fa-sm fa-fw"></i></a>
                     <a class="btn btn-primary" href="#" role="button"><i class="fas fa-trash fa-sm fa-fw"></i></a>
                 </td>
             </tr>
