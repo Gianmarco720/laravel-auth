@@ -3,6 +3,12 @@
 @section('content')
 
 <h1>Projects</h1>
+@if (session('message'))
+<div class="alert alert-success" role="alert">
+    {{session('message')}}
+</div>
+@endif
+
 <a class="btn btn-primary m-3" href="{{route('admin.projects.create')}}" role="button">New Project</a>
 <div class="table-responsive">
     <table class="table table-striped
@@ -25,9 +31,9 @@
                 <td>{{$project->title}}</td>
                 <td>{{$project->slug}}</td>
                 <td>
-                    <a name="" id="" class="btn btn-primary" href="#" role="button"><i class="fas fa-eye fa-sm fa-fw"></i></a>
-                    <a name="" id="" class="btn btn-primary" href="#" role="button"><i class="fas fa-pencil fa-sm fa-fw"></i></a>
-                    <a name="" id="" class="btn btn-primary" href="#" role="button"><i class="fas fa-trash fa-sm fa-fw"></i></a>
+                    <a class="btn btn-primary" href="{{route('admin.projects.show', $project->slug)}}" role="button"><i class="fas fa-eye fa-sm fa-fw"></i></a>
+                    <a class="btn btn-primary" href="#" role="button"><i class="fas fa-pencil fa-sm fa-fw"></i></a>
+                    <a class="btn btn-primary" href="#" role="button"><i class="fas fa-trash fa-sm fa-fw"></i></a>
                 </td>
             </tr>
             @empty
