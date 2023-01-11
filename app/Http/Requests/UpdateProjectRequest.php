@@ -29,4 +29,11 @@ class UpdateProjectRequest extends FormRequest
             'body' => 'nullable',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'title.required' => 'Title Is Required',
+        ];
+    }
 }

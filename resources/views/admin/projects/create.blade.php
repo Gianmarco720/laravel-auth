@@ -16,26 +16,18 @@
 
 <form action="{{route('admin.projects.store')}}" method="post">
     @csrf
+
     <div class="mb-3">
         <label for="title" class="form-label">Title</label>
         <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" placeholder="My New Project" aria-describedby="titleHelper" value="{{old('title')}}">
         <small id="titleHelper" class="text-muted">Add a title for your new project, max 100 characters, must be unique</small>
     </div>
-    @error('title')
-    <div class="alert alert-danger" role="alert">
-        {{message}}
-    </div>
-    @enderror
 
     <div class="mb-3">
         <label for="body" class="form-label">Project Description</label>
         <textarea class="form-control @error('body') is-invalid @enderror" name="body" id="body" rows="5" value="{{old('body')}}"></textarea>
     </div>
-    @error('body')
-    <div class=" alert alert-danger" role="alert">
-        {{message}}
-    </div>
-    @enderror
+
     <button type="submit" class="btn btn-primary">Create</button>
 </form>
 @endsection
