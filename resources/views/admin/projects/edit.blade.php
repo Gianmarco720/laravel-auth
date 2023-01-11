@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>Create A New Project</h1>
+<h1>Edit A Project</h1>
 
 @if ($errors->any())
 <div class="alert alert-danger" role="alert">
@@ -14,12 +14,12 @@
 </div>
 @endif
 
-<form action="{{route('admin.projects.update')}}" method="post">
+<form action="{{route('admin.projects.update', $project->slug)}}" method="post">
     @csrf
     @method('PUT')
     <div class="mb-3">
         <label for="title" class="form-label">Title</label>
-        <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" placeholder="My New Project" aria-describedby="titleHelper" value="{{old('title')}}">
+        <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" placeholder="My New Project" aria-describedby="titleHelper" value="{{$project->title}}">
         <small id="titleHelper" class="text-muted">Add a title for your new project, max 100 characters, must be unique</small>
     </div>
     @error('title')
@@ -30,7 +30,7 @@
 
     <div class="mb-3">
         <label for="body" class="form-label">Body</label>
-        <textarea class="form-control @error('body') is-invalid @enderror" name="body" id="body" rows="5" value="{{old('body')}}"></textarea>
+        <textarea class="form-control @error('body') is-invalid @enderror" name="body" id="body" rows="5" value="{{old($project->body)}}"></textarea>
     </div>
     @error('body')
     <div class=" alert alert-danger" role="alert">
