@@ -52,6 +52,12 @@ class ProjectController extends Controller
         // replace the value of cover_image inside $val_data
         $val_data['cover_image'] = $cover_image;
 
+        // check if the request has a cover_image field
+        if ($request->hasFile('cover_image')) {
+            $cover_image = Storage::put('uploads', $val_data['cover_image']);
+            $val_data['cover_image'] = $cover_image;
+        }
+
         // generate project slug
         $project_slug = Project::generateSlug($val_data['title']);
         $val_data['slug'] = $project_slug;
@@ -100,6 +106,18 @@ class ProjectController extends Controller
         // update the slug
         $project_slug = Project::generateSlug($val_data['title']);
         $val_data['slug'] = $project_slug;
+
+        // check if the request has a cover_image field
+        if ($request->hasFile('cover_image')) {
+
+            // check if the current post has an image, if yes, delete it.
+            if ($project->cover_image) {
+                Storage::delete($project->cover_image);
+            }
+
+            $cover_image = Storage::put('uploads', $val_data['cover_image']);
+            $val_data['cover_image'] = $cover_image;
+        }
 
         // update the resource
         $project->update($val_data);
