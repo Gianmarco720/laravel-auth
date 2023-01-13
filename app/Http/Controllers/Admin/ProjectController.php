@@ -136,5 +136,9 @@ class ProjectController extends Controller
     {
         $project->delete();
         return to_route('admin.projects.index')->with('message', 'Project Deleted Successfully');
+
+        if ($project->cover_image) {
+            Storage::delete($project->cover_image);
+        }
     }
 }
