@@ -6,6 +6,7 @@ use App\Models\Project;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -44,6 +45,12 @@ class ProjectController extends Controller
 
         // validate data
         $val_data = $request->validated();
+
+        // save the input cover_image
+        $cover_image = Storage::put('uploads', $val_data['cover_image']);
+
+        // replace the value of cover_image inside $val_data
+        $val_data['cover_image'] = $cover_image;
 
         // generate project slug
         $project_slug = Project::generateSlug($val_data['title']);

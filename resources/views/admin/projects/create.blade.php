@@ -24,6 +24,12 @@
     </div>
 
     <div class="mb-3">
+        <label for="cover_image" class="form-label">Add a cover image</label>
+        <input type="file" name="cover_image" id="cover_image" class="form-control @error('cover_image') is-invalid @enderror" placeholder="" aria-describedby="coverImageHelper">
+        <small id="coverImageHelper" class="text-muted">Add a cover image for your project</small>
+    </div>
+
+    <div class="mb-3">
         <label for="body" class="form-label">Project Description</label>
         <textarea class="form-control @error('body') is-invalid @enderror" name="body" id="body" rows="5" value="{{old('body')}}"></textarea>
     </div>
