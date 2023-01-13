@@ -4,15 +4,7 @@
 
 <h1>Create A New Project</h1>
 
-@if ($errors->any())
-<div class="alert alert-danger" role="alert">
-    <ul>
-        @foreach ($errors-all() as $error)
-        <li>{{$error}}</li>
-        @endforeach
-    </ul>
-</div>
-@endif
+@include('partials.error-any')
 
 <form action="{{route('admin.projects.store')}}" method="post" enctype="multipart/form-data">
     @csrf

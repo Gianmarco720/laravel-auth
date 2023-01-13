@@ -3,11 +3,8 @@
 @section('content')
 
 <h1>Projects</h1>
-@if (session('message'))
-<div class="alert alert-success" role="alert">
-    {{session('message')}}
-</div>
-@endif
+
+@include('partials.error-session')
 
 <a class="btn btn-primary m-3" href="{{route('admin.projects.create')}}" role="button">New Project</a>
 <div class="table-responsive">
